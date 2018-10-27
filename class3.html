@@ -66,6 +66,7 @@
 a = '3'
 print (type(a))
 a = (float(a))
+print (type(a))
             </code></pre></div>
         </section>
 
@@ -73,7 +74,8 @@ a = (float(a))
             <h3>Function calls</h3>
             <pre><code contenteditable class="small python">
 a = 3
-print (type(a))
+type(a)
+
             </code></pre>
             <p class="copy--small box--small">A function can take <strong>arguments</strong></p>
             <p class="copy--small box--small">In the example above, the variable <code>a</code> is passed<br/>as an argument to the function <code>type</code></p>
@@ -284,10 +286,6 @@ print (4 in menu)
                     <td>Given a data type, return its length</td>
                 </tr>
                 <tr>
-                    <td><code>range()</code></td>
-                    <td>Create a list of integers in the range provided.</td>
-                </tr>
-                <tr>
                     <td><code>sorted()</code></td>
                     <td>Given a data type, returns a sorted copy of that data type</td>
                 </tr>
@@ -305,10 +303,9 @@ print (4 in menu)
 print (len([1, 2]))
 print (len("Hello"))
 
-# range() - Quickly creates a list of integers
-print (range(5))
-print (range(5, 10))
-print (range(0, 10, 2))
+# list(enumerate()) - Enumerate over a list or dictionary
+print(list(enumerate(['spring', 'summer'])))
+print(list(enumerate({'salad': 4, 'burger': 5})))
 
 # sorted() - Sort a given list
 grades = [93, 100, 60]
@@ -327,6 +324,20 @@ for item in to_dos:
 
 name = 'Sally'
 print ('Her name is {}'.format(name))
+            </code></pre>
+        </section>
+
+                <section>
+            <h3>String Formatting With Multipe Arguments</h3>
+            <pre><code contenteditable class="python">
+print ('To Do:')
+to_dos = ['work', 'sleep', 'work']
+for (index, item) in enumerate(to_dos, start=1):
+    print ('%s: %s' %(index, item))
+
+name = 'Sally'
+age = 24
+print ('Her name is {} and she is {} years old'.format(name, age))
             </code></pre>
         </section>
 
