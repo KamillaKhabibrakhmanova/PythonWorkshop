@@ -53,24 +53,6 @@
         </section>
 
         <section>
-            <h3>Data Type: Sets</h3>
-            <p class="copy--small">Sets are unordered data types whose elements are unique. Therefore, adding a value to a set that already has it, does nothing.</p>
-            <p class="copy--small fragment">Sets can be created with comma separated elements enclosed in {} in Python 2.7 or greater.</p>
-            <p class="copy--small fragment">Very often, one will make a list and use the set() function to eliminate duplicates.</p>
-            <pre class="fragment"><code class="python">
-list_a = [0, 3, 2, 0, 2, 7]
-set_a = set(list_a)
-print (set_a)
-set([0, 2, 3, 7])
-
-set_b = {1, 2, 1, 3}
-print (set_b)
-set([1, 2, 3])
-            </code></pre>
-            <p class="copy--small fragment">Sets have an add method, which like append for lists, adds an element to a set.</p>
-        </section>
-
-        <section>
             <h3>Data Type: Lists of ... Lists</h3>
             <p class="copy--small box--small">As we have already seen, an element in a
             list can be other lists.</p>
@@ -82,53 +64,9 @@ game_board = [
     [' ', 'X', ' '],
     [' ', ' ', ' '],
 ]
+game_board.append(['X', ' ', ' '])
             </code></pre></div>
             <p class="copy--small box--small fragment">This can be indexed successively with <code>game_board[0][1]</code></p>
-        </section>
-
-        <section>
-            <h3>Nested Lists continued</h3>
-            <p class="copy--small box--small">A list can be appended to a list as well</p>
-            <pre><code contenteditable class="small python">
-mary_shopping_list = ['apples', 'bananas', 'chicken', 'ice cream']
-fran_shopping_list = ['ice cream', 'beef', 'peppers', 'apples']
-bob_shopping_list = ['chicken', 'peppers']
-
-family_shopping_list = []
-family_shopping_list.append(mary_shopping_list)
-family_shopping_list.append(fran_shopping_list)
-family_shopping_list.append(bob_shopping_list)
-
-print (family_shopping_list)
-
-for shop_list in family_shopping_list:
-    for food_item in shop_list:
-        print (food_item)
-            </code></pre>
-            <p class="copy--small box--small fragment">What if we want to <strong>flatten</strong> the family shopping list?</p>
-            <p class="copy--small box--small fragment">What if we want the food items in the family shopping list to be unique?</p>
-        </section>
-
-        <section>
-            <h3>Nested Lists continued</h3>
-            <p class="copy--small box--small">A list can be appended to a list as well</p>
-            <pre><code contenteditable class="small python">
-mary_shopping_list = ['apples', 'bananas', 'chicken', 'ice cream']
-fran_shopping_list = ['ice cream', 'beef', 'peppers', 'apples']
-bob_shopping_list = ['chicken', 'peppers']
-flattened_list = set()
-
-family_shopping_list = []
-family_shopping_list.append(mary_shopping_list)
-family_shopping_list.append(fran_shopping_list)
-family_shopping_list.append(bob_shopping_list)
-
-for shop_list in family_shopping_list:
-    for food_item in shop_list:
-        flattened_list.add(food_item)
-
-print(flattened_list)
-            </code></pre>
         </section>
 
         <section>
@@ -219,38 +157,62 @@ def heal(character, amount):
                   </code></pre>
         </section>
 
-                 </section>
+        <section>
+            <h3>Reading a file</h3>
+            <p class="copy--small box--small">Files can be opened using the function open(filename)</p>
+            <p class="copy--xsmall box--small">This opens what is called a <i>file handle</i> that allows you to work on the file, but does not yet have the data the file.</p>
+            <p class="copy--xsmall box--small">To read the file, we use the .read() method available on the file handle.</p>
+            <pre><code contenteditable class="small python">
+my_file = open('words.txt')
+print(my_file)
+my_contents = my_file.read()
+print(my_contents)
+            </code></pre><
+        </section>
 
-                <section>
-                    <h3>Functional Python: Map</h3>
-                    <p class="copy--small box--small">Python is a not a purely functional language, but it can be used (and is commonly used) for functional programming.</p>
-                    <p class="copy--small box--small">There are a few functions that are used for functional programming: Range, Filter, and Map</p>
- 
-                    <p class="copy--small box--small">One commonly used, higher order function<br/>(that is a Python builtin) is called <strong>map</strong></p>
-                    <pre><code contenteditable class=" python">
-# Define any function
-def square(number):
-    return number ** 2
+        <section>
+            <h3>Writing to a file</h3>
+            <p class="copy--small box--small">To write to a file, you simple open any file (it does not have to exist), adding in a 'w' as the second argument. This opens the file in 'write' mode'.</p>
+            <p class="copy--xsmall box--small">!Important! This will overwrite data you already had in the file, so don't do this to files you wanted to save!</p>
+            <p class="copy--small box--small">The 'write' method adds a line to you file. Add '\n' when you want to start on a new line.</p>
+            <p class="copy--small box--small">Always call .close() on your file when you are done so that it saves your work.</p>
+            <pre><code contenteditable class="small python">
+my_file = open('example.txt', 'w')
 
-# Pass the function to list(map) along with an iterable
-squares = list(map(square, range(10)))
-print(squares)
+my_file.write('Here is my first line!\n')
+my_file.write('Here is my second line!')
+my_file.close()
+            </code></pre>
+        </section>
 
-# Function returns true for values that pass the filter
-def isEven(number):
-  return number % 2 == 0
+        <section>
+            <h3>Let's Develop It</h3>
+            <p class="box--small copy--small">Save a .txt file with random text in the same folder as your practice python file, and try to read it using Python. You can generate random text on himsum.co or use anything you want!</p>
+            <p class="box--small copy--small">Try creating a new file and write to it using the 'write' mode.</p>
+        </section>
 
-evens = list(filter(isEven, range(10)))
-print (evens)
-                    </code></pre>
-                </section>
+       <section>
+            <h3>Python Libraries</h3>
+            <p class="copy--small box--small">Python comes with built-in libraries, that you can simpy import at the top of your Python program.</p>
+            <p class="copy--small box--small">A popular one is the math library.</p>
+            <p class="copy--small box--small">Python built in libraries and their methods can be seen in the Python documentation.</p>
+            <pre><code contenteditable class="small python">
+import math
 
-                <section>
-                    <h3>Let's Develop It</h3>
-                    <p class="box--small copy--small fragment">Write a function that prints the double<br/>of every number from 0 to 10 using a for loop</p>
-                    <p class="box--small copy--small fragment">Write a function that prints the double<br/>of every number from 0 to 10 using a map</p>
-                    <p class="box--small copy--small fragment">Write a map that takes in a list and appends "or I'll be a monkey's uncle" to every item in that list.  (input: [1,4], output: ["1 or I'll be a monkey's uncle"], "2 or I'll be a monkey's uncle"])</p>
-                </section>
+num = math.pow(2, 5)
+print(num)
+            </code></pre>
+        </section>
+
+       <section>
+            <h3>Python Open Source Libraries</h3>
+            <p class="copy--small box--small">Pip is a program that, once installed, allows you to easily install open source libraries created by other developers.</p>
+            <p class="copy--small box--small">You can find installation instructions <a href="https://pypi.org/project/pip/">here</a></p>
+            <pre><code contenteditable class="small python">
+pip install duckduckgo
+            </code></pre>
+            <p class="copy--small box--small">Once installed, you can use the library the same way as a build-in Python library.</p>
+        </section>
 
                 <section>
                     <h3>Let's Develop It</h3>
@@ -259,6 +221,8 @@ print (evens)
                         <li><strong>Search the Web </strong>- Write a program that searches the web<br/>using DuckDuckGo and displays results.
                         </li>
                         <li><strong>Encryption </strong>- Write a program that encrypts a string from<br/>user input, or file and is able to decrypt it as well.
+                        </li>
+                        <li><strong>Drawing </strong>- Use Python's build-in Turtle library to draw something.
                         </li>
                         <li><strong>Command Line Game </strong>- Create a simple game that runs inside the terminal.
                         </li>
@@ -269,7 +233,7 @@ print (evens)
                     <table class="copy--small box">
                         <tr>
                             <td style="width: 250px;">Search the Web</td>
-                            <td style="padding-bottom: 20px;"><a href="https://github.com/crazedpsyc/python-duckduckgo/">python-duckduckgo</a> library to get started. Download duckduckgo.py and put it in the same directory as your code. Use the query() function it provides to begin. (HINT: Results are often empty, but 'related' list usually has a few hits.)</td>
+                            <td style="padding-bottom: 20px;">Download pip and then install the <a href="https://pypi.org/project/ddg3/">ddg3</a> library to get started. You will also need to pip install requests. Use the query() function it provides to begin. (HINT: Results are often empty, but 'related' list usually has a few hits.)</td>
                         </tr>
                         <tr>
                             <td>Encryption</td>
@@ -281,6 +245,10 @@ print (evens)
                 <section>
                     <h3>Let's Develop It Resources Continued</h3>
                     <table class="copy--small box">
+                        <tr>
+                            <td style="width: 250px;">Draw Something</td>
+                            <td style="padding-bottom: 20px;"><a href='https://docs.python.org/3/library/turtle.html'>Turtle</a> is a build in library that lets you draw things. Run the example code in python and then play around with it to draw something else.</td>
+                        </tr>
                         <tr>
                             <td style="width: 250px;">Command Line Game</td>
                             <td>This might be a text adventure with paragraphs of text followed by a series of choices for the user. A choice maps to another node in the story (another paragraph with choices). You might try storing the paragraphs separately in a text file. The format might be something different, such as a series of "rooms", each with a description, for the user to explore by entering commands such as "go west". Examples of these kinds of games are <a href="https://en.wikipedia.org/wiki/Colossal_Cave_Adventure">Colossal Cave Adventure</a> and <a href="https://en.wikipedia.org/wiki/Zor">Zork</a></td>
