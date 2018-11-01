@@ -47,8 +47,9 @@
       <section>
         <h3>What we will cover for the rest of today</h3>
         <ul class="list--xtall copy--small box">
-            <li class="fragment">(Even) More Data Types</li>
             <li class="fragment">Combining data types</li>
+            <li class="fragment">Reading/Writing files</li>
+            <li class="fragment">Python Libraries</li>
         </ul>
         </section>
 
@@ -154,20 +155,24 @@ def heal(character, amount):
     character['health'] = character['health'] + amount
     if character['health'] > 100:
         character['health'] = 100
+
+injure(character, 30)
+heal(character, 10)
+
                   </code></pre>
         </section>
 
         <section>
             <h3>Reading a file</h3>
             <p class="copy--small box--small">Files can be opened using the function open(filename)</p>
-            <p class="copy--xsmall box--small">This opens what is called a <i>file handle</i> that allows you to work on the file, but does not yet have the data the file.</p>
-            <p class="copy--xsmall box--small">To read the file, we use the .read() method available on the file handle.</p>
+            <p class="copy--small box--small">This opens what is called a <i>file handle</i> that allows you to work on the file, but does not yet have the data the file.</p>
+            <p class="copy--small box--small">To read the file, we use the .read() method available on the file handle.</p>
             <pre><code contenteditable class="small python">
 my_file = open('words.txt')
 print(my_file)
 my_contents = my_file.read()
 print(my_contents)
-            </code></pre><
+            </code></pre>
         </section>
 
         <section>
